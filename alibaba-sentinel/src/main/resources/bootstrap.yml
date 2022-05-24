@@ -1,0 +1,23 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: lph-sentinel-8003
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+#        clientIp: localhost:8003
+
+#默认8719，假如被占用了会自动从8719开始依次+1扫描。直至找到未被占用的端口
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#我们上面搭配了nacos的注册中心，当然你不搭也可以，但是微服务是必须要有注册中心的，单纯的写个demo也可以不使用。
